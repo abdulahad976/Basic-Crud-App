@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Disks</title>
+</head>
+<style>
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+    th, td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+    }
+    th {
+        background-color: #5ec2b1;
+    }.add-button {
+            display: block;
+            margin-top: 20px;
+            text-align: center;
+        }
+</style>
+<body>
+    <h1>List of Disks</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Size (GB)</th>
+                <th>Price</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for disk in disks %}
+                <tr>
+                    <td>{{ disk.name }}</td>
+                    <td>{{ disk.capacity }}</td>
+                    <td>{{ disk.price }}</td>
+                    <td>
+                        <a href="{% url 'updatedisk' disk.id %}">Update</a> || 
+                        <a href="{% url 'deletedisk' disk.id %}">Delete</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="{% url 'adddisk' %}" class="add-button">Add another Disk</a>
+</body>
+</html>
+
+
+ 
